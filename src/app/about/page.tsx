@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function AboutPage() {
   return (
-    <div className="container mx-auto px-4 py-16">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl py-16">
       <div className="mb-8">
         <Link href="/">
           <Button variant="outline" className="gap-2">
