@@ -1,63 +1,60 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
+  CardDescription,
 } from "@/components/ui/card";
-import { ArrowLeft, Github, Link as LinkIcon } from "lucide-react";
+import { ArrowLeft, Github, LinkIcon } from "lucide-react";
 import Link from "next/link";
+import { useLanguage } from "@/contexts/language-context";
+import { translations } from "@/lib/translations";
 
 const projects = [
   {
-    title: "E-commerce Platform",
-    description:
-      "A full-stack e-commerce platform built with Next.js, TypeScript, and Stripe integration.",
-    technologies: [
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Stripe",
-      "PostgreSQL",
-    ],
-    image: "/projects/ecommerce.png",
-    github: "https://github.com/yourusername/ecommerce",
-    demo: "https://ecommerce-demo.com",
+    title: "Project 1",
+    description: "A brief description of the project and its key features.",
+    technologies: ["React", "TypeScript", "Tailwind CSS"],
+    github: "https://github.com/yourusername/project1",
+    demo: "https://project1-demo.com",
   },
   {
-    title: "Task Management App",
-    description:
-      "A collaborative task management application with real-time updates and team features.",
-    technologies: ["React", "Node.js", "Socket.io", "MongoDB"],
-    image: "/projects/task-manager.png",
-    github: "https://github.com/yourusername/task-manager",
-    demo: "https://task-manager-demo.com",
+    title: "Project 2",
+    description: "A brief description of the project and its key features.",
+    technologies: ["Next.js", "Node.js", "MongoDB"],
+    github: "https://github.com/yourusername/project2",
+    demo: "https://project2-demo.com",
   },
   {
-    title: "Portfolio Website",
-    description:
-      "A modern portfolio website built with Next.js and shadcn/ui components.",
-    technologies: ["Next.js", "Tailwind CSS", "shadcn/ui", "Framer Motion"],
-    image: "/projects/portfolio.png",
-    github: "https://github.com/yourusername/portfolio",
-    demo: "https://your-portfolio.com",
+    title: "Project 3",
+    description: "A brief description of the project and its key features.",
+    technologies: ["Angular", "Firebase", "Material UI"],
+    github: "https://github.com/yourusername/project3",
+    demo: "https://project3-demo.com",
   },
 ];
 
 export default function ProjectsPage() {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl py-16">
       <div className="mb-8">
         <Link href="/">
           <Button variant="outline" className="gap-2">
             <ArrowLeft className="h-4 w-4" />
-            Back to Home
+            {t.projects.backToHome}
           </Button>
         </Link>
       </div>
 
-      <h1 className="mb-12 text-4xl font-bold tracking-tight">My Projects</h1>
+      <h1 className="mb-12 text-4xl font-bold tracking-tight">
+        {t.projects.title}
+      </h1>
 
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((project, index) => (
@@ -84,13 +81,13 @@ export default function ProjectsPage() {
                 <Button variant="outline" size="sm" asChild>
                   <Link href={project.github} target="_blank">
                     <Github className="mr-2 h-4 w-4" />
-                    GitHub
+                    {t.projects.github}
                   </Link>
                 </Button>
                 <Button variant="outline" size="sm" asChild>
                   <Link href={project.demo} target="_blank">
                     <LinkIcon className="mr-2 h-4 w-4" />
-                    Live Demo
+                    {t.projects.liveDemo}
                   </Link>
                 </Button>
               </div>

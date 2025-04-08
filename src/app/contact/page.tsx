@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -12,48 +13,35 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ArrowLeft, Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
-import { sendEmail } from "../actions";
-import { useState, useRef } from "react";
+import { useLanguage } from "@/contexts/language-context";
+import { translations } from "@/lib/translations";
 import { useToast } from "@/components/ui/use-toast";
 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { language } = useLanguage();
+  const t = translations[language];
   const { toast } = useToast();
-  const formRef = useRef<HTMLFormElement>(null);
 
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      const formData = new FormData(event.currentTarget);
-      const result = await sendEmail(formData);
-
-      if (result.error) {
-        toast({
-          title: "Error",
-          description: result.error,
-          variant: "destructive",
-        });
-      } else {
-        toast({
-          title: "Success",
-          description: "Your message has been sent!",
-        });
-        if (formRef.current) {
-          formRef.current.reset();
-        }
-      }
+      // Simulate form submission
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      toast({
+        title: t.contact.form.success,
+      });
     } catch (error) {
       toast({
-        title: "Error",
-        description: "Something went wrong. Please try again.",
+        title: t.contact.form.error,
         variant: "destructive",
       });
     } finally {
       setIsSubmitting(false);
     }
-  }
+  };
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl py-16">
@@ -61,31 +49,35 @@ export default function ContactPage() {
         <Link href="/">
           <Button variant="outline" className="gap-2">
             <ArrowLeft className="h-4 w-4" />
-            Back to Home
+            {t.contact.backToHome}
           </Button>
         </Link>
       </div>
 
       <div className="grid gap-8 md:grid-cols-2">
         <div className="space-y-6">
-          <h1 className="text-4xl font-bold tracking-tight">Get in Touch</h1>
+          <h1 className="text-4xl font-bold tracking-tight">
+            {t.contact.title}
+          </h1>
           <p className="text-lg text-muted-foreground">
-            I'm always interested in hearing about new projects and
-            opportunities. Feel free to reach out!
+            {t.contact.description}
           </p>
           <div className="flex gap-4">
             <Button variant="outline" size="icon" asChild>
-              <Link href="https://github.com/yourusername" target="_blank">
+              <Link href="https://github.com/yvngelton" target="_blank">
                 <Github className="h-5 w-5" />
               </Link>
             </Button>
             <Button variant="outline" size="icon" asChild>
-              <Link href="https://linkedin.com/in/yourusername" target="_blank">
+              <Link
+                href="https://www.linkedin.com/in/eltonbakia/"
+                target="_blank"
+              >
                 <Linkedin className="h-5 w-5" />
               </Link>
             </Button>
             <Button variant="outline" size="icon" asChild>
-              <Link href="mailto:your.email@example.com">
+              <Link href="mailto:eltonbakia@gmail.com">
                 <Mail className="h-5 w-5" />
               </Link>
             </Button>
@@ -94,51 +86,39 @@ export default function ContactPage() {
 
         <Card>
           <CardHeader>
-            <CardTitle>Send a Message</CardTitle>
-            <CardDescription>
-              Fill out the form below and I'll get back to you as soon as
-              possible.
-            </CardDescription>
+            <CardTitle>{t.contact.title}</CardTitle>
           </CardHeader>
           <CardContent>
-            <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
                 <label htmlFor="name" className="text-sm font-medium">
-                  Name
+                  {t.contact.form.name}
                 </label>
-                <Input id="name" name="name" placeholder="Your name" required />
+                <Input id="name" placeholder={t.contact.form.name} required />
               </div>
               <div className="space-y-2">
                 <label htmlFor="email" className="text-sm font-medium">
-                  Email
+                  {t.contact.form.email}
                 </label>
                 <Input
                   id="email"
-                  name="email"
                   type="email"
-                  placeholder="your.email@example.com"
+                  placeholder={t.contact.form.email}
                   required
                 />
               </div>
               <div className="space-y-2">
                 <label htmlFor="message" className="text-sm font-medium">
-                  Message
+                  {t.contact.form.message}
                 </label>
                 <Textarea
                   id="message"
-                  name="message"
-                  placeholder="Your message"
-                  className="min-h-[150px]"
+                  placeholder={t.contact.form.message}
                   required
                 />
               </div>
-              <Button
-                type="submit"
-                className="w-full"
-                variant="outline"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? "Sending..." : "Send Message"}
+              <Button type="submit" disabled={isSubmitting}>
+                {isSubmitting ? t.contact.form.sending : t.contact.form.send}
               </Button>
             </form>
           </CardContent>

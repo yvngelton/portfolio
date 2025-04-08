@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -9,8 +11,13 @@ import {
 import { Divider } from "@/components/ui/divider";
 import { Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
+import { useLanguage } from "@/contexts/language-context";
+import { translations } from "@/lib/translations";
 
 export default function Home() {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <main className="flex min-h-screen flex-col">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
@@ -19,18 +26,18 @@ export default function Home() {
           <div className="flex flex-col items-center space-y-4 text-center">
             <div className="space-y-2">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-                Hi, I'm Your Name
+                {t.home.hero.title}
               </h1>
               <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-                Full Stack Developer | Problem Solver | Tech Enthusiast
+                {t.home.hero.subtitle}
               </p>
             </div>
             <div className="space-x-4">
               <Button variant="outline" asChild>
-                <Link href="/projects">View Projects</Link>
+                <Link href="/projects">{t.home.hero.viewProjects}</Link>
               </Button>
               <Button variant="outline" asChild>
-                <Link href="/contact">Contact Me</Link>
+                <Link href="/contact">{t.home.hero.contactMe}</Link>
               </Button>
             </div>
           </div>
@@ -44,18 +51,15 @@ export default function Home() {
             <div className="flex flex-col justify-center space-y-4">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                  About Me
+                  {t.home.about.title}
                 </h2>
                 <p className="max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                  I'm a passionate full-stack developer with a keen eye for
-                  design and a love for creating seamless user experiences. With
-                  expertise in modern web technologies, I build scalable and
-                  maintainable applications that solve real-world problems.
+                  {t.home.about.description}
                 </p>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
                 <Button variant="outline" asChild>
-                  <Link href="/about">Learn More</Link>
+                  <Link href="/about">{t.home.about.learnMore}</Link>
                 </Button>
               </div>
             </div>
@@ -69,9 +73,10 @@ export default function Home() {
                     <div className="space-y-2">
                       <h3 className="font-semibold">Frontend</h3>
                       <ul className="text-sm text-gray-500 dark:text-gray-400">
+                        <li>JavaScript</li>
+                        <li>Typescript</li>
+                        <li>Angular</li>
                         <li>React</li>
-                        <li>Next.js</li>
-                        <li>TypeScript</li>
                         <li>Tailwind CSS</li>
                       </ul>
                     </div>
@@ -79,11 +84,13 @@ export default function Home() {
                       <h3 className="font-semibold">Backend</h3>
                       <ul className="text-sm text-gray-500 dark:text-gray-400">
                         <li>Node.js</li>
-                        <li>Express</li>
                         <li>PostgreSQL</li>
-                        <li>MongoDB</li>
+                        <li>MySQL</li>
+                        <li>Python</li>
+                        <li>Java</li>
                       </ul>
                     </div>
+                    <p>And more...</p>
                   </div>
                 </CardContent>
               </Card>
@@ -98,10 +105,10 @@ export default function Home() {
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                Featured Projects
+                {t.home.projects.title}
               </h2>
               <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-                Check out some of my recent work
+                {t.home.projects.subtitle}
               </p>
             </div>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -137,7 +144,7 @@ export default function Home() {
               </Card>
             </div>
             <Button variant="outline" asChild>
-              <Link href="/projects">View All Projects</Link>
+              <Link href="/projects">{t.home.projects.viewAll}</Link>
             </Button>
           </div>
         </div>
@@ -149,10 +156,10 @@ export default function Home() {
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                Get in Touch
+                {t.home.contact.title}
               </h2>
               <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-                Let's work together on your next project
+                {t.home.contact.subtitle}
               </p>
             </div>
             <div className="space-x-4">
@@ -176,7 +183,7 @@ export default function Home() {
               </Button>
             </div>
             <Button variant="outline" asChild>
-              <Link href="/contact">Contact Me</Link>
+              <Link href="/contact">{t.home.contact.contactMe}</Link>
             </Button>
           </div>
         </div>
