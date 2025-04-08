@@ -164,20 +164,20 @@ export default function Home() {
             </div>
             <div className="space-x-4">
               <Button variant="outline" size="icon" asChild>
-                <Link href="https://github.com/yourusername" target="_blank">
+                <Link href="https://github.com/yvngelton" target="_blank">
                   <Github className="h-5 w-5" />
                 </Link>
               </Button>
               <Button variant="outline" size="icon" asChild>
                 <Link
-                  href="https://linkedin.com/in/yourusername"
+                  href="https://www.linkedin.com/in/eltonbakia/"
                   target="_blank"
                 >
                   <Linkedin className="h-5 w-5" />
                 </Link>
               </Button>
               <Button variant="outline" size="icon" asChild>
-                <Link href="mailto:your.email@example.com">
+                <Link href="mailto:eltonbakia@gmail.com">
                   <Mail className="h-5 w-5" />
                 </Link>
               </Button>
