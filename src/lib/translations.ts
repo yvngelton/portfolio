@@ -9,7 +9,7 @@ export const translations = {
     home: {
       hero: {
         title: "Hi, I'm Elton Bakia",
-        subtitle: "Frontend Developer | Problem Solver | Tech Enthusiast",
+        subtitle: "Frontend Developer | Problem Solver",
         viewProjects: "View Projects",
         contactMe: "Contact Me",
       },
@@ -58,10 +58,13 @@ export const translations = {
       },
     },
     projects: {
-      title: "My Projects",
+      title: "Projects",
       backToHome: "Back to Home",
       github: "GitHub",
       liveDemo: "Live Demo",
+      workInProgress: "Work in Progress",
+      workInProgressDescription:
+        "I'm currently working on some exciting projects. Check back soon to see what I've been building!",
     },
     contact: {
       title: "Get in Touch",
@@ -89,8 +92,7 @@ export const translations = {
     home: {
       hero: {
         title: "Ciao, sono Elton Bakia",
-        subtitle:
-          "Sviluppatore Frontend | Problem Solver | Appassionato di Tecnologia",
+        subtitle: "Sviluppatore Frontend | Problem Solver",
         viewProjects: "Vedi i Progetti",
         contactMe: "Contattami",
       },
@@ -139,10 +141,13 @@ export const translations = {
       },
     },
     projects: {
-      title: "I Miei Progetti",
+      title: "Progetti",
       backToHome: "Torna alla Home",
       github: "GitHub",
       liveDemo: "Demo Live",
+      workInProgress: "Lavori in Corso",
+      workInProgressDescription:
+        "Sto lavorando su alcuni progetti interessanti. Torna presto per vedere cosa sto costruendo!",
     },
     contact: {
       title: "Contattami",

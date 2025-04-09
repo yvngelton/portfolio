@@ -115,9 +115,15 @@ export default function ContactPage() {
                   id="message"
                   placeholder={t.contact.form.message}
                   required
+                  className="min-h-[150px]"
                 />
               </div>
-              <Button type="submit" disabled={isSubmitting}>
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                variant="outline"
+                className="w-full"
+              >
                 {isSubmitting ? t.contact.form.sending : t.contact.form.send}
               </Button>
             </form>

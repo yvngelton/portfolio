@@ -9,7 +9,7 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 import { Divider } from "@/components/ui/divider";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowRight, Construction } from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/language-context";
 import { translations } from "@/lib/translations";
@@ -111,40 +111,26 @@ export default function Home() {
                 {t.home.projects.subtitle}
               </p>
             </div>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              <Card>
+            <div className="flex justify-center w-full">
+              <Card className="w-full max-w-md">
                 <CardHeader>
-                  <CardTitle>Project 1</CardTitle>
+                  <CardTitle className="flex items-center justify-center gap-2">
+                    <Construction className="h-6 w-6" />
+                    {t.projects.workInProgress}
+                  </CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    A brief description of the project and its key features.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle>Project 2</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    A brief description of the project and its key features.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle>Project 3</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    A brief description of the project and its key features.
+                <CardContent className="text-center">
+                  <p className="text-muted-foreground">
+                    {t.projects.workInProgressDescription}
                   </p>
                 </CardContent>
               </Card>
             </div>
             <Button variant="outline" asChild>
-              <Link href="/projects">{t.home.projects.viewAll}</Link>
+              <Link href="/projects" className="flex items-center gap-2">
+                {t.home.projects.viewAll}
+                <ArrowRight className="h-4 w-4" />
+              </Link>
             </Button>
           </div>
         </div>

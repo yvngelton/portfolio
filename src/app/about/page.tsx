@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Download } from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/language-context";
 import { translations } from "@/lib/translations";
@@ -27,6 +27,20 @@ export default function AboutPage() {
           <h1 className="text-4xl font-bold tracking-tight">{t.about.title}</h1>
           <p className="text-lg text-muted-foreground">{t.about.description}</p>
           <p className="text-lg text-muted-foreground">{t.about.journey}</p>
+          <div className="flex flex-col gap-2 min-[400px]:flex-row">
+            <Button variant="outline" asChild className="gap-2">
+              <a href="/cv/Elton_Bakia_CV_EN.pdf" download>
+                <Download className="h-4 w-4" />
+                Download CV (English)
+              </a>
+            </Button>
+            <Button variant="outline" asChild className="gap-2">
+              <a href="/cv/Elton_Bakia_CV_IT.pdf" download>
+                <Download className="h-4 w-4" />
+                Download CV (Italian)
+              </a>
+            </Button>
+          </div>
         </div>
 
         <Card>
